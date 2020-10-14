@@ -40,13 +40,13 @@ public class billing {
     };
     private BillingClient billingClient;
 
-    billing(Activity activity, checkBuy checkBuy){
+    public billing(Activity activity, checkBuy checkBuy){
         mActivity = activity;
         this.checkBuy = checkBuy;
         init();
         checkBuy();
     }
-    billing(Activity activity){
+    public billing(Activity activity){
         mActivity = activity;
         init();
     }
