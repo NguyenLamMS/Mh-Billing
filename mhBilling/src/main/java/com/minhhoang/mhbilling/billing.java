@@ -23,11 +23,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class billing {
-    private Activity mActivity;
-    static String ID_PRODUCT;
-    static Boolean PURCHASE = false;
-    private checkBuy checkBuy;
-    private PurchasesUpdatedListener purchasesUpdatedListener = new PurchasesUpdatedListener() {
+    public Activity mActivity;
+    public static String ID_PRODUCT;
+    public static Boolean PURCHASE = false;
+    public checkBuy checkBuy;
+    public PurchasesUpdatedListener purchasesUpdatedListener = new PurchasesUpdatedListener() {
         @Override
         public void onPurchasesUpdated(@NonNull BillingResult billingResult, @Nullable List<Purchase> list) {
             if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK){
