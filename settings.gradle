@@ -1,0 +1,3 @@
+include ':mhBilling'
+include ':app', ':library', ':dlib'
+rootProject.name = "mh billing"
