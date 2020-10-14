@@ -22,9 +22,6 @@ import com.android.billingclient.api.SkuDetailsResponseListener;
 import java.util.ArrayList;
 import java.util.List;
 
-interface checkBuy{
-    void resultPurchase(Boolean check);
-}
 public class billing {
     private Activity mActivity;
     static String ID_PRODUCT;
