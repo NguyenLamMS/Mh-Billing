@@ -22,7 +22,7 @@ import com.android.billingclient.api.SkuDetailsResponseListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class billing {
+public class Billing {
     public Activity mActivity;
     public static String ID_PRODUCT;
     public static Boolean PURCHASE = false;
@@ -40,13 +40,14 @@ public class billing {
     };
     private BillingClient billingClient;
 
-    public billing(Activity activity, checkBuy checkBuy){
+    public Billing(Activity activity, checkBuy checkBuy, String id_product){
         mActivity = activity;
         this.checkBuy = checkBuy;
+        this.ID_PRODUCT = id_product;
         init();
         checkBuy();
     }
-    public billing(Activity activity){
+    public Billing(Activity activity){
         mActivity = activity;
         init();
     }

@@ -5,7 +5,7 @@
     <application>
         <activity
             android:theme="@style/mhBilling"
-            android:name=".mhBilling"></activity>
+            android:name=".BillingActivity"></activity>
     </application>
 
 </manifest>

@@ -2,7 +2,6 @@ package com.minhhoang.mhbilling;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,13 +17,13 @@ public class MainActivity extends AppCompatActivity implements checkBuy {
         setContentView(R.layout.activity_main);
         button = findViewById(R.id.button);
         checkBuy checkBuy = new MainActivity();
-        billing.ID_PRODUCT = "android.test.purchased";
-        billing billing = new billing(MainActivity.this, checkBuy);
+        Billing.ID_PRODUCT = "android.test.purchased";
+        Billing billing = new Billing(MainActivity.this, checkBuy,"android.test.purchased");
         billing.checkBuy();
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, mhBilling.class));
+                startActivity(new Intent(MainActivity.this, BillingActivity.class));
             }
         });
     }
