@@ -17,12 +17,13 @@ public class BillingActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
         billing = new Billing(BillingActivity.this);
-        if(!billing.PURCHASE){
+        if(billing.PURCHASE){
             setContentView(R.layout.activity_mh_billing);
             txtPrice = findViewById(R.id.txtsale);
             txtTitle = findViewById(R.id.content);
             imgSale = findViewById(R.id.imgSale);
-            imgSale.setImageDrawable(billing.getIMAGE());
+            if(billing.getIMAGE() != null)
+                imgSale.setImageDrawable(billing.getIMAGE());
             txtPrice.setText(billing.getPRICE());
             txtTitle.setText(billing.getTITLE());
         }

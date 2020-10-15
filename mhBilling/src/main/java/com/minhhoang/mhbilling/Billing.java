@@ -138,7 +138,6 @@ public class Billing {
                 .setListener(purchasesUpdatedListener)
                 .enablePendingPurchases()
                 .build();
-        IMAGE = mActivity.getDrawable(R.drawable.ic_premium);
     }
     public void buyItem(){
         billingClient.startConnection(new BillingClientStateListener() {
