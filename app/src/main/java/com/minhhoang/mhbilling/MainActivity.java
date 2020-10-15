@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 
-public class MainActivity extends AppCompatActivity implements checkBuy {
+public class MainActivity extends AppCompatActivity implements CheckBuy {
     private Button button;
     static  Boolean check = false;
     @Override
@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity implements checkBuy {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         button = findViewById(R.id.button);
-        checkBuy checkBuy = new MainActivity();
+        CheckBuy checkBuy = new MainActivity();
         Billing.ID_PRODUCT = "android.test.purchased";
         Billing billing = new Billing(MainActivity.this, checkBuy,"android.test.purchased");
         billing.checkBuy();

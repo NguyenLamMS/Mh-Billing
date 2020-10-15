@@ -3,7 +3,6 @@ package com.minhhoang.mhbilling;
 import android.app.Activity;
 import android.widget.Toast;
 
-import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -26,7 +25,7 @@ public class Billing {
     public Activity mActivity;
     public static String ID_PRODUCT;
     public static Boolean PURCHASE = false;
-    public checkBuy checkBuy;
+    public CheckBuy checkBuy;
     public PurchasesUpdatedListener purchasesUpdatedListener = new PurchasesUpdatedListener() {
         @Override
         public void onPurchasesUpdated(@NonNull BillingResult billingResult, @Nullable List<Purchase> list) {
@@ -40,10 +39,16 @@ public class Billing {
     };
     private BillingClient billingClient;
 
-    public Billing(Activity activity, checkBuy checkBuy, String id_product){
+    public Billing(Activity activity, CheckBuy checkBuy, String id_product){
         mActivity = activity;
         this.checkBuy = checkBuy;
         this.ID_PRODUCT = id_product;
+        init();
+        checkBuy();
+    }
+    public Billing(Activity activity, CheckBuy checkBuy){
+        mActivity = activity;
+        this.checkBuy = checkBuy;
         init();
         checkBuy();
     }

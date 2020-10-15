@@ -1,5 +1,5 @@
 package com.minhhoang.mhbilling;
 
-public interface checkBuy {
+public interface CheckBuy {
     public void resultPurchase(Boolean check);
 }
