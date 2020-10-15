@@ -15,7 +15,7 @@ public class BillingActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
         billing = new Billing(BillingActivity.this);
-        if(billing.PURCHASE)
+        if(!billing.PURCHASE)
             setContentView(R.layout.activity_mh_billing);
         else
             setContentView(R.layout.billing_suscess);
