@@ -80,5 +80,6 @@
         android:text="Buy Now"
         android:layout_margin="20dp"
         android:layout_width="match_parent"
-        android:layout_height="60dp"/>
+        app:layout_constrainedWidth="true"
+        android:layout_height="wrap_content"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
