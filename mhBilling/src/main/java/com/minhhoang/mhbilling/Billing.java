@@ -25,6 +25,7 @@ public class Billing {
     public Activity mActivity;
     public static String ID_PRODUCT;
     public static Boolean PURCHASE = false;
+    public static String PRICE = "2";
     public CheckBuy checkBuy;
     public PurchasesUpdatedListener purchasesUpdatedListener = new PurchasesUpdatedListener() {
         @Override
