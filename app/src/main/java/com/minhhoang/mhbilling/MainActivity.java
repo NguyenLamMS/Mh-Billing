@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity implements CheckBuy {
         button = findViewById(R.id.button);
         CheckBuy checkBuy = new MainActivity();
         Billing billing = new Billing(MainActivity.this, checkBuy,"android.test.purchased");
-        billing.checkBuy();
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
