@@ -24,9 +24,9 @@ import java.util.List;
 
 public class Billing {
     private Activity mActivity;
-    private  String ID_PRODUCT;
+    public static String ID_PRODUCT;
     public static Boolean PURCHASE = false;
-    private  String PRICE = " Only $2";
+    private  String PRICE = "Only $2";
     private  String TITLE = "Buy premium for only $2. Remove ads permanently.";
     private Drawable IMAGE;
     private CheckBuy checkBuy;
