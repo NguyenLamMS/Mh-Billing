@@ -1,6 +1,7 @@
 package com.minhhoang.mhbilling;
 
 import android.app.Activity;
+import android.graphics.drawable.Drawable;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,11 +23,86 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Billing {
-    public Activity mActivity;
-    public static String ID_PRODUCT;
+    private Activity mActivity;
+    private  String ID_PRODUCT;
     public static Boolean PURCHASE = false;
-    public static String PRICE = "2";
-    public CheckBuy checkBuy;
+    private  String PRICE = " Only $2";
+    private  String TITLE = "Buy premium for only $2. Remove ads permanently.";
+    private Drawable IMAGE;
+    private CheckBuy checkBuy;
+
+    public Drawable getIMAGE() {
+        return IMAGE;
+    }
+
+    public void setIMAGE(Drawable IMAGE) {
+        this.IMAGE = IMAGE;
+    }
+
+    public void setmActivity(Activity mActivity) {
+        this.mActivity = mActivity;
+    }
+
+    public void setID_PRODUCT(String ID_PRODUCT) {
+        this.ID_PRODUCT = ID_PRODUCT;
+    }
+
+    public static void setPURCHASE(Boolean PURCHASE) {
+        Billing.PURCHASE = PURCHASE;
+    }
+
+    public void setPRICE(String PRICE) {
+        this.PRICE = PRICE;
+    }
+
+    public void setTITLE(String TITLE) {
+        this.TITLE = TITLE;
+    }
+
+    public void setCheckBuy(CheckBuy checkBuy) {
+        this.checkBuy = checkBuy;
+    }
+
+    public void setPurchasesUpdatedListener(PurchasesUpdatedListener purchasesUpdatedListener) {
+        this.purchasesUpdatedListener = purchasesUpdatedListener;
+    }
+
+    public void setBillingClient(BillingClient billingClient) {
+        this.billingClient = billingClient;
+    }
+
+    public Activity getmActivity() {
+        return mActivity;
+    }
+
+    public String getID_PRODUCT() {
+        return ID_PRODUCT;
+    }
+
+    public static Boolean getPURCHASE() {
+        return PURCHASE;
+    }
+
+    public String getPRICE() {
+        return PRICE;
+    }
+
+    public String getTITLE() {
+        return TITLE;
+    }
+
+    public CheckBuy getCheckBuy() {
+        return checkBuy;
+    }
+
+    public PurchasesUpdatedListener getPurchasesUpdatedListener() {
+        return purchasesUpdatedListener;
+    }
+
+    public BillingClient getBillingClient() {
+        return billingClient;
+    }
+
     public PurchasesUpdatedListener purchasesUpdatedListener = new PurchasesUpdatedListener() {
         @Override
         public void onPurchasesUpdated(@NonNull BillingResult billingResult, @Nullable List<Purchase> list) {
@@ -62,6 +138,7 @@ public class Billing {
                 .setListener(purchasesUpdatedListener)
                 .enablePendingPurchases()
                 .build();
+        IMAGE = mActivity.getDrawable(R.drawable.ic_premium);
     }
     public void buyItem(){
         billingClient.startConnection(new BillingClientStateListener() {

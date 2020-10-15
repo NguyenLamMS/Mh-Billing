@@ -40,14 +40,6 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <ImageView
-            android:visibility="gone"
-            android:id="@+id/imgcrown"
-            android:layout_alignParentEnd="true"
-            android:layout_margin="20dp"
-            android:src="@drawable/ic_crown"
-            android:layout_width="50dp"
-            android:layout_height="50dp"/>
     </RelativeLayout>
     <RelativeLayout
         android:layout_margin="20dp"
