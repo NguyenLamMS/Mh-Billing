@@ -18,3 +18,8 @@ Step 2. Add the dependency
 	}
 
 ```
+# Screenshot
+<p align="center">
+  <img src="https://github.com/NguyenLamMS/mh-billing/blob/master/screenshot/Screenshot_1602742745.png" width="350" title="hover text">
+  <img src="https://github.com/NguyenLamMS/mh-billing/blob/master/screenshot/Screenshot_1602743170.png" width="350" alt="accessibility text">
+</p>
