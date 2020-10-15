@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity implements CheckBuy {
         setContentView(R.layout.activity_main);
         button = findViewById(R.id.button);
         CheckBuy checkBuy = new MainActivity();
-        Billing.ID_PRODUCT = "android.test.purchased";
         Billing billing = new Billing(MainActivity.this, checkBuy,"android.test.purchased");
         billing.checkBuy();
         button.setOnClickListener(new View.OnClickListener() {

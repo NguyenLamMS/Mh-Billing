@@ -74,10 +74,14 @@ public class Billing {
                     billingClient.querySkuDetailsAsync(params.build(), new SkuDetailsResponseListener() {
                         @Override
                         public void onSkuDetailsResponse(@NonNull BillingResult billingResult, @Nullable List<SkuDetails> list) {
-                            BillingFlowParams flowParams = BillingFlowParams.newBuilder()
-                                    .setSkuDetails(list.get(0))
-                                    .build();
-                            int responseCode = billingClient.launchBillingFlow(mActivity, flowParams).getResponseCode();
+                            if(list.size() > 0){
+                                BillingFlowParams flowParams = BillingFlowParams.newBuilder()
+                                        .setSkuDetails(list.get(0))
+                                        .build();
+                                int responseCode = billingClient.launchBillingFlow(mActivity, flowParams).getResponseCode();
+                            }else{
+                                Toast.makeText(mActivity, "Error! An error occurred. Please try again later",Toast.LENGTH_SHORT).show();
+                            }
                         }
                     });
                 }
