@@ -52,7 +52,7 @@
            android:layout_centerInParent="true"
            android:id="@+id/txtsale"
            android:textStyle="bold"
-           android:textColor="#ECDF00"
+           android:textColor="@color/colorPrimaryDark"
            android:text="Only $2 left"
            android:textSize="30dp"
            android:gravity="center"

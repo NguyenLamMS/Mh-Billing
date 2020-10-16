@@ -29,6 +29,7 @@ public class BillingActivity extends AppCompatActivity  {
             if(billing.getCOLOR() != null){
                 btnBuy.setBackgroundColor(billing.getCOLOR());
                 txtHeader.setTextColor(billing.getCOLOR());
+                txtPrice.setTextColor(billing.getCOLOR());
             }
             txtPrice.setText(billing.getPRICE());
             txtTitle.setText(billing.getTitleScreen1());
