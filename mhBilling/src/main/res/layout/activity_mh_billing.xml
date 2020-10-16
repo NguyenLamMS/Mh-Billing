@@ -13,7 +13,7 @@
         android:text="Buy Premium"
         android:textStyle="bold"
         android:textSize="23dp"
-        android:textColor="#6E70F0"
+        android:textColor="@color/colorPrimaryDark"
         android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,7 +62,7 @@
     <Button
         android:textAllCaps="false"
         android:id="@+id/btnBuy"
-        android:background="#6E70F0"
+        android:background="@color/colorPrimaryDark"
         android:textColor="#FFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,6 +1,7 @@
 package com.minhhoang.mhbilling;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.widget.Toast;
 
@@ -27,16 +28,59 @@ public class Billing {
     public static String ID_PRODUCT;
     public static Boolean PURCHASE = false;
     private static String PRICE = "Only $2";
-    private static String TITLE = "Buy premium for only $2. Remove ads permanently.";
-    private static Drawable IMAGE;
+    private static String TITLE_SCREEN_1 = "Buy premium for only $2. Remove ads permanently.";
+    private static String TITLE_SCREEN_2 = "Thank you for purchasing the product.";
+    private static Drawable IMAGE_SCREEN_1;
+    private static Drawable IMAGE_SCREEN_2;
+    private static Integer COLOR;
     private CheckBuy checkBuy;
 
-    public Drawable getIMAGE() {
-        return IMAGE;
+    public static String getIdProduct() {
+        return ID_PRODUCT;
     }
 
-    public void setIMAGE(Drawable IMAGE) {
-        this.IMAGE = IMAGE;
+    public static void setIdProduct(String idProduct) {
+        ID_PRODUCT = idProduct;
+    }
+
+    public static Integer getCOLOR() {
+        return COLOR;
+    }
+
+    public static void setCOLOR(Integer COLOR) {
+        Billing.COLOR = COLOR;
+    }
+
+    public static String getTitleScreen1() {
+        return TITLE_SCREEN_1;
+    }
+
+    public static void setTitleScreen1(String titleScreen1) {
+        TITLE_SCREEN_1 = titleScreen1;
+    }
+
+    public static String getTitleScreen2() {
+        return TITLE_SCREEN_2;
+    }
+
+    public static void setTitleScreen2(String titleScreen2) {
+        TITLE_SCREEN_2 = titleScreen2;
+    }
+
+    public static Drawable getImageScreen1() {
+        return IMAGE_SCREEN_1;
+    }
+
+    public static void setImageScreen1(Drawable imageScreen1) {
+        IMAGE_SCREEN_1 = imageScreen1;
+    }
+
+    public static Drawable getImageScreen2() {
+        return IMAGE_SCREEN_2;
+    }
+
+    public static void setImageScreen2(Drawable imageScreen2) {
+        IMAGE_SCREEN_2 = imageScreen2;
     }
 
     public void setmActivity(Activity mActivity) {
@@ -53,10 +97,6 @@ public class Billing {
 
     public void setPRICE(String PRICE) {
         this.PRICE = PRICE;
-    }
-
-    public void setTITLE(String TITLE) {
-        this.TITLE = TITLE;
     }
 
     public void setCheckBuy(CheckBuy checkBuy) {
@@ -85,10 +125,6 @@ public class Billing {
 
     public String getPRICE() {
         return PRICE;
-    }
-
-    public String getTITLE() {
-        return TITLE;
     }
 
     public CheckBuy getCheckBuy() {

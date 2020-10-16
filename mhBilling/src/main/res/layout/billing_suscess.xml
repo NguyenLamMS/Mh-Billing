@@ -13,7 +13,7 @@
         android:text="Thank You"
         android:textStyle="bold"
         android:textSize="23dp"
-        android:textColor="#6E70F0"
+        android:textColor="@color/colorPrimaryDark"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
