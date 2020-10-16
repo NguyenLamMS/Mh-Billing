@@ -2,17 +2,16 @@ package com.minhhoang.mhbilling;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+
 
 
 public class MainActivity extends AppCompatActivity implements CheckBuy {
     private Button button;
-    static  Boolean check = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements CheckBuy {
     }
 
     @Override
-    public void resultPurchase(Boolean check) {
-        this.check = check;
+    public void resultPurchase(Boolean check, Activity mActivity) {
+        mActivity.startActivity(new Intent(mActivity, BillingActivity.class));
     }
 }

@@ -216,11 +216,11 @@ public class Billing {
                         public void onPurchaseHistoryResponse(@NonNull BillingResult billingResult, @Nullable List<PurchaseHistoryRecord> list) {
                             if (list.size() > 0) {
                                 PURCHASE = true;
-                                checkBuy.resultPurchase(true);
+                                checkBuy.resultPurchase(true, mActivity);
                                 PURCHASE = true;
                             }else{
                                 PURCHASE = false;
-                                checkBuy.resultPurchase(false);
+                                checkBuy.resultPurchase(false, mActivity);
                             }
                         }
                     });
