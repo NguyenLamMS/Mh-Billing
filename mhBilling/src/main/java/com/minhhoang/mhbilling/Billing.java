@@ -207,6 +207,7 @@ public class Billing {
         });
     }
     public void checkBuy(){
+
         billingClient.startConnection(new BillingClientStateListener() {
             @Override
             public void onBillingSetupFinished(@NonNull BillingResult billingResult) {
@@ -224,6 +225,9 @@ public class Billing {
                             }
                         }
                     });
+                }else{
+                    PURCHASE = false;
+                    checkBuy.resultPurchase(false, mActivity);
                 }
             }
             @Override
