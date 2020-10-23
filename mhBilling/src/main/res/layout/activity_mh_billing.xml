@@ -10,7 +10,7 @@
     <TextView
         android:layout_marginTop="20dp"
         android:id="@+id/hearder"
-        android:text="Buy Premium"
+        android:text="Remove Ads"
         android:textStyle="bold"
         android:textSize="23dp"
         android:textColor="@color/colorPrimaryDark"
@@ -32,7 +32,8 @@
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-   <RelativeLayout
+   <LinearLayout
+       android:orientation="vertical"
        android:layout_margin="20dp"
        android:id="@+id/sale"
        app:layout_constraintTop_toBottomOf="@+id/content"
@@ -41,24 +42,45 @@
        app:layout_constraintStart_toStartOf="parent"
        android:layout_width="match_parent"
        android:layout_height="wrap_content">
-       <ImageView
-           android:id="@+id/imgSale"
-           android:src="@drawable/ic_premium"
-           android:layout_width="match_parent"
-           android:layout_height="150dp"/>
-       <TextView
-           android:layout_margin="10dp"
-           android:layout_below="@+id/imgSale"
-           android:layout_centerInParent="true"
-           android:id="@+id/txtsale"
-           android:textStyle="bold"
-           android:textColor="@color/colorPrimaryDark"
-           android:text="Only $2 left"
-           android:textSize="30dp"
-           android:gravity="center"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"/>
-   </RelativeLayout>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+                <RadioButton
+                    android:id="@+id/oneMonths"
+                    android:buttonTint="@color/colorPrimaryDark"
+                    android:drawablePadding="20dp"
+                    android:layout_margin="10dp"
+                    android:textSize="18dp"
+                    android:text="Remove ads 1 months"
+                    android:layout_width="wrap_content"
+                    style="@style/mhBilling"
+                    android:layout_height="wrap_content"/>
+                <RadioButton
+                    android:id="@+id/threeMonths"
+                    android:buttonTint="@color/colorPrimaryDark"
+                    android:layout_margin="10dp"
+                    android:textSize="18dp"
+                    android:text="Remove ads 3 months"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <RadioButton
+                    android:id="@+id/sixMonths"
+                    android:buttonTint="@color/colorPrimaryDark"
+                    android:layout_margin="10dp"
+                    android:textSize="18dp"
+                    android:text="Remove ads 6 months"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <RadioButton
+                    android:id="@+id/twelveMonths"
+                    android:buttonTint="@color/colorPrimaryDark"
+                    android:layout_margin="10dp"
+                    android:textSize="18dp"
+                    android:text="Remove ads 12 months"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+        </RadioGroup>
+   </LinearLayout>
     <Button
         android:textAllCaps="false"
         android:id="@+id/btnBuy"

@@ -8,13 +8,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.android.billingclient.api.AcknowledgePurchaseParams;
+import com.android.billingclient.api.AcknowledgePurchaseResponseListener;
 import com.android.billingclient.api.BillingClient;
 import com.android.billingclient.api.BillingClientStateListener;
 import com.android.billingclient.api.BillingFlowParams;
 import com.android.billingclient.api.BillingResult;
 import com.android.billingclient.api.Purchase;
-import com.android.billingclient.api.PurchaseHistoryRecord;
-import com.android.billingclient.api.PurchaseHistoryResponseListener;
 import com.android.billingclient.api.PurchasesUpdatedListener;
 import com.android.billingclient.api.SkuDetails;
 import com.android.billingclient.api.SkuDetailsParams;
@@ -26,9 +26,10 @@ import java.util.List;
 public class Billing {
     private Activity mActivity;
     public static String ID_PRODUCT;
+    public static List<String> LIST_PRODUCT = new ArrayList<>();
     public static Boolean PURCHASE = false;
     private static String PRICE = "Only $2";
-    private static String TITLE_SCREEN_1 = "Buy premium for only $2. Remove ads permanently.";
+    private static String TITLE_SCREEN_1 = "Remove ads to bring best app experience";
     private static String TITLE_SCREEN_2 = "Thank you for purchasing the product.";
     private static Drawable IMAGE_SCREEN_1;
     private static Drawable IMAGE_SCREEN_2;
@@ -143,30 +144,36 @@ public class Billing {
         @Override
         public void onPurchasesUpdated(@NonNull BillingResult billingResult, @Nullable List<Purchase> list) {
             if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK){
-                Toast.makeText(mActivity, "Thank you for purchasing the product",Toast.LENGTH_SHORT).show();
+                AcknowledgePurchaseResponseListener acknowledgePurchaseResponseListener = new AcknowledgePurchaseResponseListener() {
+                    @Override
+                    public void onAcknowledgePurchaseResponse(@NonNull BillingResult billingResult) {
+
+                    }
+                };
+                for(Purchase purchase: list){
+                    AcknowledgePurchaseParams acknowledgePurchaseParams =
+                            AcknowledgePurchaseParams.newBuilder()
+                                    .setPurchaseToken(purchase.getPurchaseToken())
+                                    .build();
+                    billingClient.acknowledgePurchase(acknowledgePurchaseParams, acknowledgePurchaseResponseListener);
+                }
+                Toast.makeText(mActivity, "Thank you for purchasing the product.",Toast.LENGTH_SHORT).show();
+                PURCHASE = true;
                 mActivity.finish();
-            }else{
-                Toast.makeText(mActivity, "Transaction failed !!!",Toast.LENGTH_SHORT).show();
             }
         }
     };
     private BillingClient billingClient;
 
-    public Billing(Activity activity, CheckBuy checkBuy, String id_product){
-        mActivity = activity;
-        this.checkBuy = checkBuy;
-        this.ID_PRODUCT = id_product;
-        init();
-        checkBuy();
-    }
     public Billing(Activity activity, CheckBuy checkBuy){
         mActivity = activity;
         this.checkBuy = checkBuy;
         init();
         checkBuy();
     }
-    public Billing(Activity activity){
+    public Billing(Activity activity, String id_product){
         mActivity = activity;
+        ID_PRODUCT = id_product;
         init();
     }
     void init(){
@@ -183,7 +190,7 @@ public class Billing {
                     List<String> skuList = new ArrayList<>();
                     skuList.add(ID_PRODUCT);
                     SkuDetailsParams.Builder params = SkuDetailsParams.newBuilder();
-                    params.setSkusList(skuList).setType(BillingClient.SkuType.INAPP);
+                    params.setSkusList(skuList).setType(BillingClient.SkuType.SUBS);
                     billingClient.querySkuDetailsAsync(params.build(), new SkuDetailsResponseListener() {
                         @Override
                         public void onSkuDetailsResponse(@NonNull BillingResult billingResult, @Nullable List<SkuDetails> list) {
@@ -193,7 +200,7 @@ public class Billing {
                                         .build();
                                 int responseCode = billingClient.launchBillingFlow(mActivity, flowParams).getResponseCode();
                             }else{
-                                Toast.makeText(mActivity, "Error! An error occurred. Please try again later",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(mActivity, "Error! An error occurred. Please try again later.",Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -207,28 +214,32 @@ public class Billing {
         });
     }
     public void checkBuy(){
-
         billingClient.startConnection(new BillingClientStateListener() {
             @Override
             public void onBillingSetupFinished(@NonNull BillingResult billingResult) {
+                boolean check = false;
                 if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                    billingClient.queryPurchaseHistoryAsync(BillingClient.SkuType.INAPP, new PurchaseHistoryResponseListener() {
-                        @Override
-                        public void onPurchaseHistoryResponse(@NonNull BillingResult billingResult, @Nullable List<PurchaseHistoryRecord> list) {
-                            if (list.size() > 0) {
-                                PURCHASE = true;
-                                checkBuy.resultPurchase(true, mActivity);
-                                PURCHASE = true;
+                    Purchase.PurchasesResult result = billingClient.queryPurchases(BillingClient.SkuType.SUBS);
+                    List<Purchase> listItem = result.getPurchasesList();
+                    if(listItem.size() > 0){
+                        for (Purchase purchase : listItem){
+                            if(purchase.isAutoRenewing()){
+                                check = true;
+                                break;
                             }else{
-                                PURCHASE = false;
-                                checkBuy.resultPurchase(false, mActivity);
+                                check = false;
                             }
                         }
-                    });
+                    }
+                }
+                if(check){
+                    checkBuy.resultPurchase(true, mActivity);
+                    PURCHASE = true;
                 }else{
                     PURCHASE = false;
                     checkBuy.resultPurchase(false, mActivity);
                 }
+
             }
             @Override
             public void onBillingServiceDisconnected() {
